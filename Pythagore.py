@@ -70,9 +70,47 @@ class Triangle1(Scene):
         boxes.set_fill(BLACK, opacity= 0.5)
         self.play(ShowCreation(boxes))
         
+
+        Text1 = Text("16")
+        Text2 = Text("9")
+        Text3 = Text("25")
+        Text1.to_edge(DOWN).shift(LEFT*4).shift(UP*2)
+        Text2.to_edge(DOWN).shift(LEFT*0.7).shift(UP*2)
+        Text3.to_edge(DOWN).shift(LEFT*2.3).shift(UP*0.8)
+        self.play(Write(Text1), Write(Text2))
+        self.play(Write(Text3))  
+
+
+        boxes1=VGroup(*[Square() for s in range(0,16)])
+        boxes1.arrange_in_grid(n_rows=4, buff=0.05)
+        boxes1.scale(0.25)
+        #boxes.shift(LEFT*2.37)
+        #boxes.shift(UP*0.375)
+        boxes1.align_to(carre3, DL)
+        boxes1.set_fill(WHITE, opacity= 0.5)
+
+        boxes2=VGroup(*[Square() for s in range(0,9)])
+        boxes2.arrange_in_grid(n_rows=3, buff=0.05)
+        boxes2.scale(0.25)
+        #boxes.shift(LEFT*0.62)
+        #boxes.shift(UP*0.375)
+        boxes2.align_to(carre2, DL)
+        boxes2.set_fill(WHITE, opacity= 0.5)
         
-            
-            
+
+        boxes3=VGroup(*[Square() for s in range(0,25)])
+        boxes3.arrange_in_grid(n_rows=5, buff=0.05)
+        boxes3.scale(0.245)
+        #boxes.shift(LEFT*0.62)
+        #boxes.shift(UP*0.375)
+        boxes3.align_to(carre1, DL)
+        boxes3.set_fill(WHITE, opacity= 0.5)
+
+        self.play(
+            ShowCreation(boxes1, run_time = 5),
+            #ShowCreation(boxes2, run_time = 5),
+            ShowCreation(boxes3, run_time = 5)
+            )   
         
 
         #self.embed()
