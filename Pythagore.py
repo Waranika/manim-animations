@@ -1,4 +1,6 @@
 from cmath import pi
+
+from numpy.core.shape_base import block
 from manimlib import *
 
 class Triangle1(Scene):
@@ -46,11 +48,7 @@ class Triangle1(Scene):
                   carre2.animate.shift(DOWN*0.25))
         
 
-        #for x in range(0, 4):
-            #block1 = Polygon([0, 0, 0], [0, 0.417*x, 0], [-0.417, 0.417*x, 0], [-0.417, 0, 0])
-            #block1.set_fill(GREEN, opacity= 1)
-            #block1.
-            # self.play(ShowCreation(block1))
+        
             
         boxes=VGroup(*[Square() for s in range(0,9)])
         boxes.arrange_in_grid(n_rows=3, buff=0.05)
@@ -80,39 +78,51 @@ class Triangle1(Scene):
         self.play(Write(Text1), Write(Text2))
         self.play(Write(Text3))  
 
-
-        boxes1=VGroup(*[Square() for s in range(0,16)])
-        boxes1.arrange_in_grid(n_rows=4, buff=0.05)
-        boxes1.scale(0.25)
+        
+        #boxes1=VGroup(*[Square() for s in range(0,16)])
+        #boxes1.arrange_in_grid(n_rows=4, buff=0.05)
+        #boxes1.scale(0.25)
         #boxes.shift(LEFT*2.37)
         #boxes.shift(UP*0.375)
-        boxes1.align_to(carre3, DL)
-        boxes1.set_fill(WHITE, opacity= 0.5)
+        #boxes1.align_to(carre3, DL)
+        #boxes1.set_fill(WHITE, opacity= 0.5)
 
-        boxes2=VGroup(*[Square() for s in range(0,9)])
-        boxes2.arrange_in_grid(n_rows=3, buff=0.05)
-        boxes2.scale(0.25)
+        #boxes2=VGroup(*[Square() for s in range(0,9)])
+        #boxes2.arrange_in_grid(n_rows=3, buff=0.05)
+        #boxes2.scale(0.25)
         #boxes.shift(LEFT*0.62)
         #boxes.shift(UP*0.375)
-        boxes2.align_to(carre2, DL)
-        boxes2.set_fill(WHITE, opacity= 0.5)
+        #boxes2.align_to(carre2, DL)
+        #boxes2.set_fill(WHITE, opacity= 0.5)
         
 
-        boxes3=VGroup(*[Square() for s in range(0,25)])
-        boxes3.arrange_in_grid(n_rows=5, buff=0.05)
-        boxes3.scale(0.245)
+        #boxes3=VGroup(*[Square() for s in range(0,25)])
+        #boxes3.arrange_in_grid(n_rows=5, buff=0.05)
+        #boxes3.scale(0.245)
         #boxes.shift(LEFT*0.62)
         #boxes.shift(UP*0.375)
-        boxes3.align_to(carre1, DL)
-        boxes3.set_fill(WHITE, opacity= 0.5)
+        #boxes3.align_to(carre1, DL)
+        #boxes3.set_fill(WHITE, opacity= 0.5)
 
-        self.play(
-            ShowCreation(boxes1, run_time = 5),
+        #self.play(
+            #ShowCreation(boxes1, run_time = 5),
             #ShowCreation(boxes2, run_time = 5),
-            ShowCreation(boxes3, run_time = 5)
-            )   
+            #ShowCreation(boxes3, run_time = 5)
+        #    ) 
         
+        for y in range(0, 5):
+            for x in range(0, 5):
+                block1 = Square(1)
+                block1.scale(0.5)
+                z = (5*y)+(x+1)
+                block1.align_to(carre1, DL).shift(RIGHT*(x*0.5)).shift(UP*(y*0.5))
+                block1.set_fill(GREEN, opacity= 1)
+                text = Text(f'{z}').scale(0.75).move_to(block1.get_center())
+                self.play(ShowCreation(block1), Write(text))
 
+                #block1.
+                # self.play(ShowCreation(block1))
+        self.play(text.animate.scale(3).shift(DOWN*3))
         #self.embed()
         
 
