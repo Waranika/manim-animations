@@ -1,8 +1,8 @@
 from cmath import pi
 
-from numpy.core.shape_base import block
-from manimlib import *
 
+from manimlib import *
+ 
 class Triangle1(Scene):
     def construct(self):
         
@@ -81,8 +81,16 @@ class Triangle1(Scene):
 
         self.play(text.animate.scale(3).shift(DOWN*3).shift(LEFT))
         Opening = Tex("16", "+", "9", "=", "25").shift(DOWN*2.5)
+        Theorem = Tex("4^2", "+", "3^2", "=", "5^2").shift(DOWN*2.5)
+        conclu = Tex("A^2", "+", "B^2", "=", "C^2").shift(DOWN*2.5)
         self.wait(4)
         self.play(Write(Opening))
+        self.play(FadeOut(Opening, DOWN))
+        self.play(FadeIn(Theorem, DOWN))
+        self.wait(4)
+        self.play(FadeOut(Theorem, DOWN))
+        self.play(FadeIn(conclu, DOWN))
+        self.play
         #self.embed()
         
 
